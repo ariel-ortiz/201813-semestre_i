@@ -1,0 +1,25 @@
+= Semetre i: Educación inteligente
+
+_Módulos de Lenguajes de programación y Desarrollo de aplicaciones web._
+
+_Tecnológico de Monterrey, Estado de México._
+
+Este proyecto contiene todos los archivos fuente que el profesor irá generando durante el semestre agosto-diciembre del 2018.
+
+Los archivos se pueden consultar directamente en este mismo sitio, o se puede usar `git` para obtener una copia local de éstos. En este último caso se deben seguir los siguiente pasos:
+
+1. Si es necesario, http://git-scm.com/downloads[instalar un cliente git] en tu computadora.
+
+2. Clonar este repositorio. Desde la terminal teclear:
+    
+    git clone https://github.com/ariel-ortiz/201813-semestre_i semestre_i
+    
+3. Cambiarse al directorio `semestre_i`:
+    
+    cd semestre_i
++    
+En dicho directorio encontrás todos los archivos fuente del proyecto.
+    
+4. Cada vez que el profesor realice modificaciones a archivos existentes o agregue archivos nuevos, será necesario hacer un *pull* al repositorio. En la terminal y desde el directorio `tc1018` teclear: 
+    
+    git pull
