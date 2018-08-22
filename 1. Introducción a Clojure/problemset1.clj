@@ -16,20 +16,12 @@
   list, or 0 if its empty. Assume that all the
   elements in the input list are numbers."
   [lst]
-  (loop [sum 0
-         lst lst]
-    (if (empty? lst)
-      sum
-      (recur (+ sum (first lst)) (rest lst)))))
+  (reduce + lst))
 
 (defn fact
   "Computes the factorial of n."
   [n]
-  (loop [i      1
-         result 1]
-    (if (> i n)
-      result
-      (recur (inc i) (*' result i)))))
+  (reduce *' (range 1 (inc n))))
 
 (deftest test-f2c
   (is (= 100.0 (f2c 212.0)))
@@ -40,5 +32,12 @@
   (is (= 0 (add-list ())))
   (is (= 10 (add-list '(2 4 1 3))))
   (is (= 55 (add-list '(1 2 3 4 5 6 7 8 9 10)))))
+
+(deftest test-fact
+  (is (= 1 (fact 0)))
+  (is (= 1 (fact 1)))
+  (is (= 6 (fact 3)))
+  (is (= 120 (fact 5)))
+  (is (= 720 (fact 6))))
 
 (run-tests)
