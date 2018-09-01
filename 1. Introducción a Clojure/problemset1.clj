@@ -23,6 +23,49 @@
   [n]
   (reduce *' (range 1 (inc n))))
 
+(defn conj-end
+  [lst x]
+  (concat lst (list x)))
+
+(defn deep-reverse
+  "Takes a list as its input. It returns a list with
+  the same elements as its input but in reverse order.
+  If there are any nested lists, these too should
+  be reversed."
+  [lst]
+  (if (empty? lst)
+    ()
+    (if (list? (first lst))
+      (conj-end (deep-reverse (rest lst))
+                (deep-reverse (first lst)))
+      (conj-end (deep-reverse (rest lst))
+                (first lst)))))
+
+(defn binary
+  [n]
+  (if (zero? n)
+    ()
+    (concat (binary (quot n 2))
+            (list (rem n 2)))))
+
+(defn binary-v2
+  [n]
+  (loop [n      n
+         result ()]
+    (if (zero? n)
+      result
+      (recur (quot n 2) (cons (rem n 2) result)))))
+
+(defn binary-v3
+  [n]
+  (->>
+  (iterate (fn [[n result]]
+             [(quot n 2) (cons (rem n 2) result)])
+           [n ()])
+    (drop-while (fn [x] (pos? (first x))))
+    first
+    second))
+
 (deftest test-f2c
   (is (= 100.0 (f2c 212.0)))
   (is (= 0.0 (f2c 32.0)))
@@ -39,5 +82,11 @@
   (is (= 6 (fact 3)))
   (is (= 120 (fact 5)))
   (is (= 720 (fact 6))))
+
+(deftest test-deep-reverse
+  (is (= () (deep-reverse ())))
+  (is (= '(3 (d c b) a) (deep-reverse '(a (b c d) 3))))
+  (is (= '(((6 5) 4) 3 (2 1))
+          (deep-reverse '((1 2) 3 (4 (5 6)))))))
 
 (run-tests)
