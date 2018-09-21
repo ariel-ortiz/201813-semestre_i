@@ -5,7 +5,8 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [ring "1.6.3"]
-                 [compojure "1.6.1"]]
+                 [compojure "1.6.1"]
+                 [selmer "1.12.1"]]
   :main ^:skip-aot webapp2.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
