@@ -2,11 +2,15 @@
 ;;;; Uses the Ring library.
 
 (ns webapp2.core
+  (:import  [java.util Date Locale]
+            [java.text SimpleDateFormat])
   (:require [ring.adapter.jetty :refer [run-jetty]]
             [ring.middleware.file :refer [wrap-file]]
             [ring.util.response :refer [response charset content-type status]]
-            [compojure.core :refer [defroutes GET]]
-            [selmer.parser :refer [render-file]]))
+            [ring.util.codec :refer [form-decode]]
+            [compojure.core :refer [defroutes GET POST]]
+            [selmer.parser :refer [render-file]]
+            [clojure.pprint :refer [pprint]]))
 
 (def port 8080)
 
@@ -70,11 +74,36 @@
   </body>
 </html>" nombre))
 
+(defn fecha-hoy
+  []
+  (.format (SimpleDateFormat. "dd' de 'MMMM' de 'yyyy." (Locale. "es"))
+           (Date.)))
+
+(defn ver-request
+  [request]
+  (render-file "request.html" {:request (with-out-str (pprint request))
+                               :params (if (:query-string request)
+                                          (form-decode
+                                            (:query-string request))
+                                          nil)}))
+
 (defroutes main-routes
   (GET "/" [] hello)
   (GET "/saluda/:nombre/" [nombre] (hola-nombre nombre))
   (GET "/despide/:nombre/" [nombre] (despide nombre))
-  wtf)
+  (GET "/prueba/" [] (render-file "prueba.html"
+                                  {:fecha (fecha-hoy)
+                                   :idioma "en"
+                                   :enanos '(Dwalin Balin Kili Fili Dori Nori
+                                             Ori Oin Gloin Bifur Bofur Bombur
+                                             Thorin)
+                                   :palabras {"pollito" "chicken"
+                                              "gallina" "hen"
+                                              "lapiz"   "pencil"
+                                              "pluma"   "pen" }}))
+  (GET "/ruta/" [] ver-request)
+  (POST "/ruta/" [] ver-request)
+  (wrap-file wtf "public"))
 
 (defn -main [] ;
   (run-jetty main-routes {:port port}))

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head lang=\"es\">
+    <meta charset=\"utf-8\">
+    <title>Prueba</title>
+  </head>
+  <body>
+    <h1>{% ifequal idioma "es" %}Prueba{% else %}Test{% endifequal %}</h1>
+    <p>{{ fecha }}</p>
+    <ul>
+      {% for enano in enanos %}<li><pre>|{{ enano|center:20 }}|</pre></li>
+    {% endfor %}</ul>
+    <p>{{ palabras.pluma }}</p>
+  </body>
+</html>
