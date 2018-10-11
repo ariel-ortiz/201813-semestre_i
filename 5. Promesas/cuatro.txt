@@ -1,0 +1,4 @@
+lo que sea
+del archivo uno.
+otra cosa
+del archivo dos.

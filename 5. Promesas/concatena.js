@@ -17,18 +17,11 @@ function readFile(nombre) {
 
 console.log('Hola');
 
-fs.readFile('uno.txt', 'utf-8')
-.then(data => {
-  return fs.writeFile('tres.txt', data, 'utf-8');
-})
-.then(() => {
-  return fs.readFile('dos.txt', 'utf-8');
-})
-.then(data => {
-  return fs.appendFile('tres.txt', data, 'utf-8');
-})
-.then(() => {
-  console.log('Done.');
+Promise.all([fs.readFile('uno.txt', 'utf-8'),
+             fs.readFile('dos.txt', 'utf-8'),
+             fs.readFile('tres.txt', 'utf-8')])
+.then(valores => {
+  return fs.writeFile('cuatro.txt', valores[0] + valores[1], 'utf-8');
 })
 .catch(err => {
   console.log(err);
