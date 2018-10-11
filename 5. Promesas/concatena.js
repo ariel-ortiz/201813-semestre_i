@@ -21,7 +21,7 @@ Promise.all([fs.readFile('uno.txt', 'utf-8'),
              fs.readFile('dos.txt', 'utf-8'),
              fs.readFile('tres.txt', 'utf-8')])
 .then(valores => {
-  return fs.writeFile('cuatro.txt', valores[0] + valores[1], 'utf-8');
+  return fs.writeFile('cuatro.txt', valores[0] + valores[1] + valores[2], 'utf-8');
 })
 .catch(err => {
   console.log(err);
