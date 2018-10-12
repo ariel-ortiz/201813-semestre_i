@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title><%= titulo %></title>
+    <link rel="stylesheet"
+          href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
+    <div class="w3-bar w3-indigo">
+
+      <div class="w3-container">
+        <h1><%= titulo %></h1>
+      </div>
+    </div>
+    <div class="w3-container w3-xlarge">
+      <%- body %>
+    </div>
+    <hr/>
+    <footer class="w3-container w3-center w3-small">
+      <span class="w3-mobile">
+        &copy; 2018 por Pepper Pots (A01166611)
+      </span>
+      <span class="w3-mobile">
+        y Anthony Stark (A01160611)
+      </span>
+    </footer>
+  </body>
+</html>
