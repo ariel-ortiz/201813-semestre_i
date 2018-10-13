@@ -1,0 +1,25 @@
+<div class="w3-container w3-blue">
+  <h2>Formulario de entrada</h2>
+</div>
+
+<form class="w3-container" action="/procesa" method="post">
+  <p>
+    <label for="nombre">Nombre</label>
+    <input name="nombre" id="nombre" class="w3-input" type="text" placeholder="Pepito">
+  </p>
+  <p>
+    <label for="apellido">Apellido</label>
+    <input name="apellido" id="apellido" class="w3-input" type="text" placeholder="Pérez">
+  </p>
+  <p>
+    <label for="email">Correo electrónico</label>
+    <input name="email" id="email" class="w3-input" type="text" placeholder="tu_correo@ejemplo.com">
+  </p>
+  <p>
+    <input type="submit" value="Púshale" class="w3-button w3-round w3-blue w3-mobile"/>
+  </p>
+</form>
+
+<%- contentFor('titulo') %>
+
+Ejemplo Formulario
